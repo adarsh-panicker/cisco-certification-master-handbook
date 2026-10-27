@@ -32,14 +32,57 @@ Key book statistics:
 
 ```text
 ├── labs/
-│   ├── ccna/               # Cisco Packet Tracer (.pkt) topologies & initial switch/router configs
-│   ├── encor/              # Multi-VLAN, Dual HSRP, LACP, and Multi-Area OSPF topologies
-│   └── enarsi/             # Advanced OSPF/EIGRP redistribution, BGP peering, DMVPN configs
-├── automation-scripts/     # Chapter 11 Python Netmiko, Requests, and RESTCONF automation scripts
-├── cheat-sheets/           # Printable Subnetting, Administrative Distance & Port reference tables
-├── ERRATA.md               # Continuous Errata Tracker and Blueprint update changelog
-└── .github/                # Official Issue submission templates for reader feedback
+│   ├── ccna/                   # Cisco Packet Tracer (.pkt) initial configs & lab exercises
+│   ├── encor/                  # Multi-VLAN, Dual HSRP, LACP, and Multi-Area OSPF topologies
+│   └── enarsi/                 # Advanced OSPF/EIGRP redistribution, BGP peering, DMVPN configs
+├── topologies-cml-eveng/       # Cisco Modeling Labs (CML 2.x) & EVE-NG YAML topologies & startup configs
+├── automation-scripts/         # Chapter 11 Python Netmiko, Requests, and RESTCONF automation toolkit
+├── cheat-sheets/               # Printable Subnetting, OSPF LSA, BGP 13-Step & Command Cheat Sheets
+├── anki-flashcards/            # 400+ Interactive Spaced-Repetition Anki Flashcards (CSV & TXT)
+├── ERRATA.md                   # Continuous Errata Tracker and Blueprint update changelog
+└── .github/                    # Official Issue submission templates for reader feedback
 ```
+
+---
+
+## 🎁 Bonus Companion Resources & Downloads
+
+### 1. [Cisco Packet Tracer Lab Archives (.pkt & configs)](labs/ccna/)
+Pre-built, validated switch and router configurations matching every Part I CCNA configuration exercise and worked scenario walkthrough in this book:
+- `lab1_vlan_8021q_trunking.cfg`: 802.1Q trunking, access ports, and LACP EtherChannel bundles.
+- `lab2_router_on_a_stick.cfg`: Subinterfaces dot1Q encapsulation and DHCP relay helper.
+- `lab3_ospfv2_single_area.cfg`: Single-Area OSPFv2 routing and passive interface tuning.
+- `lab4_pat_overload_nat.cfg`: Dynamic Port Address Translation (PAT) overload configuration.
+- `lab5_port_security_dhcp_snooping.cfg`: Layer 2 switch defense, sticky MAC security, and DHCP snooping trust.
+
+### 2. [Cisco Modeling Labs (CML) & EVE-NG Topologies (.yaml)](topologies-cml-eveng/)
+Importable multi-node network topologies for ENCOR and ENARSI labs, including startup configuration files:
+- `cml_encor_master_lab_ha_hsrp_ospf.yaml`: Dual HSRP v2 with IP SLA object tracking, LACP EtherChannel, and Multi-Area OSPF.
+- `cml_enarsi_master_lab_redistribution_pbr.yaml`: Mutual OSPF-to-EIGRP redistribution, route-map tagging, prefix-list filtering, and Policy-Based Routing.
+- `eve_ng_dmvpn_phase3_bgp.unl.yaml`: Dual-hub DMVPN Phase 3 with NHRP shortcut and iBGP peering.
+
+### 3. [Python Network Automation Toolkit](automation-scripts/)
+Production-grade Python automation scripts utilizing **Netmiko**, **Requests**, and **NAPALM**:
+- `01_backup_running_config_netmiko.py`: Automated multi-device timestamped running-config backups.
+- `02_bulk_vlan_provisioning_netmiko.py`: Automated multi-switch VLAN provisioning and NVRAM saving.
+- `03_restconf_interface_telemetry_requests.py`: RESTCONF GET request retrieving operational state via `ietf-interfaces` YANG JSON.
+- `04_restconf_configure_loopback.py`: RESTCONF PUT request provisioning Loopback interfaces.
+- `05_napalm_bgp_and_facts_audit.py`: Multi-vendor audit of device facts, serial numbers, and BGP neighbor peering states.
+
+### 4. [Printable High-Resolution Cheat Sheets](cheat-sheets/)
+Laminated-ready quick-reference cheat sheets:
+- `01_IPv4_Subnetting_VLSM_and_Wildcard_Cheat_Sheet.md`: Prefixes /8 to /32, block sizes, and 3-step rapid mental math.
+- `02_OSPF_LSA_Types_and_Area_Rules_Cheat_Sheet.md`: LSA Types 1 to 7, stub rules, and adjacency parameters.
+- `03_BGP_13_Step_Path_Selection_Algorithm_Cheat_Sheet.md`: Complete 13-step best-path selection flow and mnemonics.
+- `04_Administrative_Distance_and_Well_Known_Ports_Cheat_Sheet.md`: AD rankings (0-255) and over 20 critical Cisco ports.
+- `05_Cisco_IOS_XE_Master_Diagnostic_Commands_Cheat_Sheet.md`: Essential show commands for Switching, Routing, and Security.
+
+### 5. [Interactive Anki Flashcard Decks](anki-flashcards/)
+Over 400 digital spaced-repetition flashcards covering:
+- Every term in the Master 14-Page Glossary categorized by track ([A] CCNA, [E] CCNP ENCOR, [R] CCNP ENARSI).
+- Administrative Distance and Protocol Timer defaults (OSPF, EIGRP, BGP, HSRP, VRRP, STP).
+- All 70 Chapter Practice Questions and 60 Mock Exam Questions with detailed rationales.
+- Production Pro-Tips and real-world field traps.
 
 ---
 

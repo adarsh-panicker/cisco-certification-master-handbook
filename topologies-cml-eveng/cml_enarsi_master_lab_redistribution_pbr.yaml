@@ -1,0 +1,41 @@
+# Cisco Modeling Labs (CML 2.x) Lab Topology
+# Part III CCNP ENARSI (300-410) Master Lab: Advanced Enterprise Routing
+# Mutual OSPF-EIGRP Redistribution with Route-Map Tagging, Prefix-Lists & PBR
+
+lab:
+  title: "CCNP ENARSI Master Lab - Mutual Redistribution & PBR"
+  description: "Advanced Multi-Protocol Redistribution, Tag-Based Loop Prevention, Prefix Filtering, and PBR"
+  version: "2.5"
+
+nodes:
+  - id: n0
+    label: R1-REDIST-GATEWAY
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 350
+    y: 200
+    configuration: "configs/R1_ENARSI_redistribution.cfg"
+
+  - id: n1
+    label: R2-OSPF-CORE
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 150
+    y: 100
+    configuration: "configs/R2_ENARSI_ospf_core.cfg"
+
+  - id: n2
+    label: R3-EIGRP-EDGE
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 550
+    y: 100
+    configuration: "configs/R3_ENARSI_pbr_edge.cfg"
+
+links:
+  - n0:GigabitEthernet1 -- n1:GigabitEthernet1
+    label: "OSPF Area 0 Link (10.1.12.0/24)"
+  - n0:GigabitEthernet2 -- n2:GigabitEthernet1
+    label: "EIGRP AS 100 Link (10.1.13.0/24)"
+  - n1:GigabitEthernet2 -- n2:GigabitEthernet2
+    label: "PBR Direct Cross-Link (10.1.23.0/24)"

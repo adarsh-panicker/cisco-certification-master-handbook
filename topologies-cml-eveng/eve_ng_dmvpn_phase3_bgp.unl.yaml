@@ -1,0 +1,45 @@
+# EVE-NG / GNS3 Importable Topology Definition
+# Chapter 13: DMVPN Phase 3 with NHRP Shortcut & iBGP Peering
+# Referenced in Chapter 13 (VPN Technologies) of Cisco Certification Master Study Handbook
+
+topology:
+  name: "DMVPN-Phase3-Dual-Hub-Spoke"
+  virtualization: "qemu / Cisco IOL / c8000v"
+  nodes:
+    HUB1:
+      type: router
+      ip_underlay: "198.51.100.1"
+      tunnel_ip: "172.16.0.1/24"
+      nhrp_network_id: 100
+      bgp_as: 65001
+      role: "Primary DMVPN Hub & BGP Route Reflector"
+
+    HUB2:
+      type: router
+      ip_underlay: "198.51.100.2"
+      tunnel_ip: "172.16.0.2/24"
+      nhrp_network_id: 100
+      bgp_as: 65001
+      role: "Secondary DMVPN Hub"
+
+    SPOKE1:
+      type: router
+      ip_underlay: "203.0.113.10"
+      tunnel_ip: "172.16.0.10/24"
+      nhrp_network_id: 100
+      bgp_as: 65001
+      role: "Branch Spoke 1 (NHRP Shortcut Enabled)"
+
+    SPOKE2:
+      type: router
+      ip_underlay: "203.0.113.20"
+      tunnel_ip: "172.16.0.20/24"
+      nhrp_network_id: 100
+      bgp_as: 65001
+      role: "Branch Spoke 2 (NHRP Shortcut Enabled)"
+
+  features:
+    - "Dynamic Multipoint VPN Phase 3 (ip nhrp redirect on Hubs, ip nhrp shortcut on Spokes)"
+    - "IPsec Protection: ESP-AES-256-GCM / IKEv2 Key Exchange"
+    - "Multipoint GRE (mGRE) Tunnel Interface"
+    - "Dynamic Spoke-to-Spoke direct data tunnels"
