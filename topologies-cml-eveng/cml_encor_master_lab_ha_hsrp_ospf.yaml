@@ -1,0 +1,42 @@
+# Cisco Modeling Labs (CML 2.x) Lab Topology
+# Part II CCNP ENCOR (350-401) Master Lab: Enterprise Core High Availability
+# Dual HSRP v2 with Object Tracking, LACP Port-Channel, and Multi-Area OSPFv2
+
+lab:
+  title: "CCNP ENCOR Master Lab - Core HA & Routing"
+  description: "Enterprise High Availability with Dual HSRP, LACP EtherChannel, Multi-Area OSPF, and IP SLA Tracking"
+  version: "2.5"
+
+nodes:
+  - id: n0
+    label: DSW1
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 200
+    y: 150
+    configuration: "configs/DSW1_ENCOR_initial.cfg"
+
+  - id: n1
+    label: DSW2
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 500
+    y: 150
+    configuration: "configs/DSW2_ENCOR_initial.cfg"
+
+  - id: n2
+    label: CORE-R1
+    node_definition: cat8000v
+    image_definition: c8000v-universalk9.17.09.04a
+    x: 350
+    y: 350
+
+links:
+  - n0:GigabitEthernet2 -- n1:GigabitEthernet2
+    label: "LACP Bundle Link 1 (Po1)"
+  - n0:GigabitEthernet3 -- n1:GigabitEthernet3
+    label: "LACP Bundle Link 2 (Po1)"
+  - n0:GigabitEthernet1 -- n2:GigabitEthernet1
+    label: "DSW1-to-CORE OSPF Area 0 Link"
+  - n1:GigabitEthernet1 -- n2:GigabitEthernet2
+    label: "DSW2-to-CORE OSPF Area 0 Link"
